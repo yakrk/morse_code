@@ -1,0 +1,36 @@
+h5 {
+    margin-right: 20%;
+}
+
+.flash-message {
+    color: red;
+
+}
+
+.content {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-family: "Noto Sans JP";
+}
+
+.title {
+    padding-bottom: 1%;
+}
+
+.flash-message {
+    padding-top: 10px;
+}
+
+.btn {
+    margin-top: 10px;
+}
+
+.form-control {
+    width: 70%;
+    margin-right: 20%;
+}
+
+#input-text {
+    width: 50%;
+}

@@ -1,0 +1,55 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}モールスコード変換{% endblock %}
+{% block styles %}
+{{super()}}
+<link href="{{url_for('static',filename='css/styles.css')}}" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="content">
+  <div class="title">
+    <h1> Simple Morse Code Converter (Japanese) </h1>
+    <h4> Convert Japanese(Hiragana/Katakana) into morse code</h4>
+  </div>
+
+  <form action="/" method="POST" enctype="multipart/form-data">
+    {{ form.csrf_token() }}
+    <div class="container">
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="input-text" class="form-label">Original Text: </label>
+        </div>
+        <div class="col-auto">
+          <input type="text" class="form-control" id="input_text" name="input_text" placeholder="Enter text here"
+            aria-describedby="inputHelpBlock">
+        </div>
+        <div class="col-auto">
+          <span id="inputHelpBlock" class="form-text">
+            Enter your text to convert in Hiragana and/or Katakana.
+          </span>
+          <div class="col-auto">
+            <input class="btn btn-dark btn-outline-dark" value="Submit" type="submit">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="flash-message">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </div>
+  {% if morse_code: %}
+  <h4>Morse Code: </h4>
+  <h5>{{ morse_code}} </h5>
+  {% endif %}
+</div>
+
+
+{% endblock %}
